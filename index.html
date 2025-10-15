@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DISPLAY BMKG MARITIM TENAU</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#021427;--card:rgba(255,255,255,0.04);--accent:#6366f1}
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Poppins, sans-serif;background:linear-gradient(#021026,#041028);color:#fff;overflow:hidden}
+
+    /* Header fixed */
+    header{position:fixed;top:0;left:0;right:0;height:64px;display:flex;align-items:center;justify-content:center;z-index:60;background:linear-gradient(180deg, rgba(2,6,23,0.75), rgba(2,6,23,0.35));backdrop-filter:blur(4px)}
+    .title{font-family:Merriweather,serif;font-size:20px;font-weight:700}
+    .time{position:fixed;top:10px;right:10px;font-size:14px;z-index:70}
+
+    /* viewport for sections */
+    .viewport{position:fixed;top:64px;left:0;right:0;bottom:0;overflow:hidden}
+
+    /* sections container slides (push) via transform translateY */
+    .sections{position:relative;width:100%;height:100%;transition:transform 700ms cubic-bezier(.2,.9,.3,1)}
+
+    section.display-section{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px}
+
+    .section-title{font-family:Merriweather,serif;font-size:20px;margin-bottom:14px;text-align:center}
+
+    .media-box{width:92vw;max-width:1600px;height:calc(100vh - 200px);border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));overflow:hidden;display:flex;align-items:center;justify-content:center;box-shadow:0 20px 40px rgba(0,0,0,0.6)}
+    .media-box img,.media-box video{width:100%;height:100%;object-fit:contain;display:block}
+
+    /* push visual flourish: incoming slide slightly scales and fades */
+    .sections.pushing{will-change:transform}
+    .active .section-title{opacity:1;transform:none;transition:opacity 400ms, transform 400ms}
+
+    /* progress bar under header */
+    .progress{position:fixed;left:0;top:64px;height:4px;width:100%;background:rgba(255,255,255,0.04);z-index:65}
+    .progress > i{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--accent), #6ee7b7);transition:width linear}
+
+    .note{position:fixed;left:10px;bottom:10px;font-size:12px;opacity:0.75}
+
+    @media(max-width:768px){.section-title{font-size:18px}.title{font-size:18px}.media-box{height:calc(100vh - 180px)}}
+    @media(max-width:420px){.section-title{font-size:16px}.media-box{height:calc(100vh - 150px)} }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="title">DISPLAY BMKG MARITIM TENAU</div>
+    <div class="time" id="clock">--:--:-- WITA</div>
+  </header>
+
+  <div class="progress"><i id="progressBar"></i></div>
+
+  <div class="viewport">
+    <div class="sections" id="sections">
+
+      <!-- initial slides -->
+      <section class="display-section" data-type="img" data-src="media/image1.jpg">
+        <div class="section-title">Gambar 1</div>
+        <div class="media-box"><img src="media/image1.jpg" alt="image1" loading="lazy"/></div>
+      </section>
+
+      <section class="display-section" data-type="img" data-src="media/image2.jpg">
+        <div class="section-title">Gambar 2</div>
+        <div class="media-box"><img src="media/image2.jpg" alt="image2" loading="lazy"/></div>
+      </section>
+
+      <section class="display-section" data-type="video" data-src="media/video1.mp4">
+        <div class="section-title">Video 1</div>
+        <div class="media-box"><video src="media/video1.mp4" muted playsinline preload="metadata"></video></div>
+      </section>
+
+      <!-- rotating images -->
+      <section class="display-section" data-type="img" data-src="media/image3.jpg">
+        <div class="section-title">Gambar 3</div>
+        <div class="media-box"><img src="media/image3.jpg" alt="image3" loading="lazy"/></div>
+      </section>
+      <section class="display-section" data-type="img" data-src="media/image4.jpg">
+        <div class="section-title">Gambar 4</div>
+        <div class="media-box"><img src="media/image4.jpg" alt="image4" loading="lazy"/></div>
+      </section>
+      <section class="display-section" data-type="img" data-src="media/image5.jpg">
+        <div class="section-title">Gambar 5</div>
+        <div class="media-box"><img src="media/image5.jpg" alt="image5" loading="lazy"/></div>
+      </section>
+      <section class="display-section" data-type="img" data-src="media/image6.jpg">
+        <div class="section-title">Gambar 6</div>
+        <div class="media-box"><img src="media/image6.jpg" alt="image6" loading="lazy"/></div>
+      </section>
+      <section class="display-section" data-type="img" data-src="media/image7.jpg">
+        <div class="section-title">Gambar 7</div>
+        <div class="media-box"><img src="media/image7.jpg" alt="image7" loading="lazy"/></div>
+      </section>
+      <section class="display-section" data-type="img" data-src="media/image8.jpg">
+        <div class="section-title">Gambar 8</div>
+        <div class="media-box"><img src="media/image8.jpg" alt="image8" loading="lazy"/></div>
+      </section>
+
+      <!-- BMKG sections -->
+      <section class="display-section" data-type="gif" data-src="https://peta-maritim.bmkg.go.id/render-static/w3g/2025/10/2025101500/kupang/mwh.gif">
+        <div class="section-title">Tinggi & Arah Gelombang Maksimum Wilayah NTT</div>
+        <div class="media-box"><img src="https://peta-maritim.bmkg.go.id/render-static/w3g/2025/10/2025101500/kupang/mwh.gif" alt="mwh"/></div>
+      </section>
+
+      <section class="display-section" data-type="gif" data-src="https://peta-maritim.bmkg.go.id/render-static/inaflows/2025/10/2025101412/kupang/s_0.gif">
+        <div class="section-title">Tingkat Kandungan Garam Wilayah NTT</div>
+        <div class="media-box"><img src="https://peta-maritim.bmkg.go.id/render-static/inaflows/2025/10/2025101412/kupang/s_0.gif" alt="s_0"/></div>
+      </section>
+
+      <section class="display-section" data-type="gif" data-src="https://peta-maritim.bmkg.go.id/render-static/inaflows/2025/10/2025101412/kupang/sl_0.gif">
+        <div class="section-title">Tinggi Sea Level Wilayah NTT</div>
+        <div class="media-box"><img src="https://peta-maritim.bmkg.go.id/render-static/inaflows/2025/10/2025101412/kupang/sl_0.gif" alt="sl_0"/></div>
+      </section>
+
+      <section class="display-section" data-type="gif" data-src="https://peta-maritim.bmkg.go.id/render-static/inaflows/2025/10/2025101500/kupang/csd_0.gif">
+        <div class="section-title">Kecepatan & Arah Arus Wilayah NTT</div>
+        <div class="media-box"><img src="https://peta-maritim.bmkg.go.id/render-static/inaflows/2025/10/2025101500/kupang/csd_0.gif" alt="csd_0"/></div>
+      </section>
+
+      <section class="display-section" data-type="gif" data-src="https://peta-maritim.bmkg.go.id/render-static/inaflows/2025/10/2025101500/kupang/csd_0.gif">
+        <div class="section-title">Kecepatan & Arah Arus Wilayah NTT</div>
+        <div class="media-box"><img src="https://peta-maritim.bmkg.go.id/render-static/inaflows/2025/10/2025101500/kupang/csd_0.gif" alt="csd_0_dup"/></div>
+      </section>
+
+      <section class="display-section" data-type="gif" data-src="https://peta-maritim.bmkg.go.id/render-static/inaflows/2025/10/2025101500/kupang/st_0.gif">
+        <div class="section-title">Temperatur Laut Wilayah NTT</div>
+        <div class="media-box"><img src="https://peta-maritim.bmkg.go.id/render-static/inaflows/2025/10/2025101500/kupang/st_0.gif" alt="st_0"/></div>
+      </section>
+
+      <section class="display-section" data-type="gif" data-src="https://peta-maritim.bmkg.go.id/render-static/w3g/2025/10/2025101500/kupang/swh.gif">
+        <div class="section-title">Tinggi & Arah Gelombang Signifikan Wilayah NTT</div>
+        <div class="media-box"><img src="https://peta-maritim.bmkg.go.id/render-static/w3g/2025/10/2025101500/kupang/swh.gif" alt="swh"/></div>
+      </section>
+
+      <section class="display-section" data-type="gif" data-src="https://peta-maritim.bmkg.go.id/render-static/w3g/2025/10/2025101500/kupang/ws.gif">
+        <div class="section-title">Arah & Kecepatan Angin Wilayah NTT</div>
+        <div class="media-box"><img src="https://peta-maritim.bmkg.go.id/render-static/w3g/2025/10/2025101500/kupang/ws.gif" alt="ws"/></div>
+      </section>
+
+    </div>
+  </div>
+
+  <div class="note">Auto push transition setiap 3 detik · hover untuk jeda · panah untuk kontrol</div>
+
+  <script>
+    // === Clock WITA ===
+    const clockEl = document.getElementById('clock');
+    function updateClock(){ try{const now=new Date();const fmt=new Intl.DateTimeFormat('id-ID',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false,timeZone:'Asia/Makassar'}); clockEl.textContent = fmt.format(now)+' WITA';}catch(e){clockEl.textContent=new Date().toLocaleTimeString()+' WITA';}}
+    updateClock(); setInterval(updateClock,1000);
+
+    // === Push transition implementation ===
+    const sectionsEl = document.getElementById('sections');
+    const sections = Array.from(document.querySelectorAll('.display-section'));
+    const INTERVAL = 3000; // 3s
+    let index = 0; let intervalId = null; let progressStart = null; const progressBar = document.getElementById('progressBar');
+
+    function updateTransform(){
+      const viewportHeight = window.innerHeight - 64; // header height
+      const translateY = -index * viewportHeight;
+      sectionsEl.style.transform = `translateY(${translateY}px)`;
+      // mark active
+      sections.forEach((s,i)=> s.classList.toggle('active', i===index));
+      // play/pause video in active section
+      sections.forEach((s,i)=>{
+        const v = s.querySelector('video'); if(v){ if(i===index){ v.muted=true; v.play().catch(()=>{}); } else { try{ v.pause(); v.currentTime = 0; }catch(e){} } }
+      });
+    }
+
+    function showIndex(i){ index = (i+sections.length) % sections.length; updateTransform(); resetProgress(); }
+
+    function startAuto(){ if(intervalId) return; intervalId = setInterval(()=>{ showIndex(index+1); }, INTERVAL); progressStart = performance.now(); requestAnimationFrame(stepProgress); }
+    function stopAuto(){ if(intervalId){ clearInterval(intervalId); intervalId=null; } }
+
+    function resetProgress(){ progressBar.style.width='0%'; progressStart = performance.now(); }
+    function stepProgress(ts){ if(!progressStart) progressStart = ts; const elapsed = ts - progressStart; const pct = Math.min(100, (elapsed/INTERVAL)*100); progressBar.style.width = pct + '%'; if(intervalId) requestAnimationFrame(stepProgress); }
+
+    // hover to pause
+    document.addEventListener('mouseover', stopAuto);
+    document.addEventListener('mouseout', startAuto);
+    window.addEventListener('blur', stopAuto); window.addEventListener('focus', startAuto);
+
+    // keyboard controls
+    document.addEventListener('keydown', (e)=>{ if(e.key==='ArrowDown'){ stopAuto(); showIndex(index+1);} else if(e.key==='ArrowUp'){ stopAuto(); showIndex(index-1);} else if(e.key===' '){ e.preventDefault(); if(intervalId) stopAuto(); else startAuto(); } });
+
+    // handle resize to re-calc transform
+    window.addEventListener('resize', ()=>{ updateTransform(); });
+
+    // init
+    updateTransform(); startAuto();
+
+    // preload local media
+    sections.forEach(s=>{ const src = s.dataset.src; if(src){ if(src.endsWith('.mp4')){ const v=document.createElement('video'); v.src=src; v.preload='metadata'; } else { const i=new Image(); i.src=src; } } });
+
+    // make page focusable for keyboard on mobile
+    document.body.tabIndex = 0;
+  </script>
+</body>
+</html>
