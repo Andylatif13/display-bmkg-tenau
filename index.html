@@ -68,7 +68,12 @@
         
         <div class="media-box"><video src="media/video1.mp4" muted playsinline preload="metadata"></video></div>
       </section>
-
+      
+      <section class="display-section" data-type="png" data-src="https://www.tide-forecast.com/system/charts-png/Kupang/tides.png">
+        <div class="section-title">Pasang Surut Wilayah Kupang</div>
+        <div class="media-box"><img src="https://www.tide-forecast.com/system/charts-png/Kupang/tides.png" alt="tides"/></div>
+      </section>
+      
       <!-- rotating images -->
       <section class="display-section" data-type="img" data-src="media/image3.jpg">
         
@@ -150,7 +155,7 @@
     // === Push transition implementation ===
     const sectionsEl = document.getElementById('sections');
     const sections = Array.from(document.querySelectorAll('.display-section'));
-    const INTERVAL = 3000; // 3s
+    const INTERVAL = 6000; // 6s
     let index = 0; let intervalId = null; let progressStart = null; const progressBar = document.getElementById('progressBar');
 
     function updateTransform(){
@@ -195,5 +200,6 @@
   </script>
 </body>
 </html>
+
 
 
